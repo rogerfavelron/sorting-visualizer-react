@@ -24,7 +24,7 @@ const AlgorithmDropDown = ({
     <Dropdown overlay={menu} trigger={['click']}>
       <div
         style={{
-          height: 40,
+          height: 16,
           width: width,
           padding: 10,
           fontWeight: 'bold',
