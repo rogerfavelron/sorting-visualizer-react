@@ -14,11 +14,11 @@ const InputSizeSlider = ({onInputSizeChanged, isVisualizing}) => {
       <div style={{color: '#1233c7', fontWeight: 'bold'}}>Array Size</div>
       <Slider
         disabled={isVisualizing}
-        defaultValue={50}
+        defaultValue={30}
         min={30}
         max={100}
         step={2}
-        style={{width: 200}}
+        style={{width: '12rem'}}
         handleStyle={{borderColor: '#1233c7'}}
         trackStyle={{background: '#1233c7'}}
         onChange={onInputSizeChanged}

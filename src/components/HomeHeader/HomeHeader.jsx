@@ -22,7 +22,7 @@ const HomeHeader = ({
       style={{
         background: '#181818',
         color: 'white',
-        padding: '10px 0px 10px 0px',
+        padding: '0.6rem 0 0.6rem 0',
         width: '100%',
       }}
       align="middle"

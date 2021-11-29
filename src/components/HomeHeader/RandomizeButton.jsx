@@ -8,7 +8,7 @@ const RandomizeButton = ({onClick}) => {
       <Button
         type="primary"
         style={{
-          width: 130,
+          width: '8rem',
           background: '#1233c7',
           borderColor: '#1233c7',
           fontWeight: 'bold',

@@ -6,7 +6,7 @@ const selectionSort = async ({
   setColorsArray,
   visualizationSpeed,
 } = {}) => {
-  array = array.concat();
+  //array = array.concat();
 
   let len = array.length;
   for (let i = 0; i < len; i++) {
@@ -14,11 +14,11 @@ const selectionSort = async ({
 
     for (let j = i + 1; j < len; j++) {
       const newColorsArray = new Array(len).fill(0);
-      newColorsArray[i] = 3;
-      newColorsArray[minIndex] = 1;
-      newColorsArray[j] = 2;
+      newColorsArray[i] = 3;//current i is orange
+      newColorsArray[minIndex] = 1;//min value is purple
+      newColorsArray[j] = 2;//the current iterate j value is yellow
       setColorsArray(newColorsArray);
-      await asyncSetTimeout({timeout: visualizationSpeed});
+      await asyncSetTimeout({ timeout: visualizationSpeed });
       if (array[minIndex] > array[j]) {
         minIndex = j;
       }
@@ -27,7 +27,7 @@ const selectionSort = async ({
     let temp = array[i];
     array[i] = array[minIndex];
     array[minIndex] = temp;
-    array = array.concat();
+    //array = array.concat();
     setArray(array);
     console.log(i);
   }

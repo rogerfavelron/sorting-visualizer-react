@@ -17,7 +17,7 @@ const SpeedSlider = ({onSpeedChange, isVisualizing}) => {
       <Slider
         disabled={isVisualizing}
         defaultValue={30}
-        style={{width: 200}}
+        style={{width: '14rem'}}
         handleStyle={{borderColor: '#c1c27a'}}
         trackStyle={{background: '#1233c7'}}
         onChange={onSpeedChange}

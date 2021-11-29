@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+//import algorithms
 import selectionSort from '../../algorithms/selection-sort';
+import bubbleSort from '../../algorithms/bubble-sort';
+import insertionSort from '../../algorithms/insertion-sort';
+import mergeSortWrapper from '../../algorithms/merge-sort';
+import quickSortLWrapper from '../../algorithms/quick-sort-l';
+//import helpers and scss
 import generateRandomizedArray from '../../helpers/randomizeArray';
 import SortingBar from '../SortingBar/SortingBar';
 import HomeHeader from '../HomeHeader/HomeHeader';
-import '../../index.css';
-import bubbleSort from '../../algorithms/bubble-sort';
-import insertionSort from '../../algorithms/insertion-sort';
+import '../../index.scss';
 
-import mergeSortWrapper from '../../algorithms/merge-sort';
-import quickSortLWrapper from '../../algorithms/quick-sort-l';
+import styled from 'styled-components'
+
 
 const Home = () => {
   const arraySize = 30;
@@ -54,53 +58,37 @@ const Home = () => {
     if (isVisualizing) return;
 
     setIsVisualizing(true);
+    let propsObject = {
+      array: randomizedArray,
+      setArray: setRandomizedArray,
+      visualizationSpeed: visualizationSpeed,
+      setColorsArray: setColorsArray,
+    }
     switch (currentAlgorithm) {
       case 'Selection Sort':
-        await selectionSort({
-          array: randomizedArray,
-          setArray: setRandomizedArray,
-          visualizationSpeed: visualizationSpeed,
-          setColorsArray: setColorsArray,
-        });
+        await selectionSort(propsObject);
         break;
 
       case 'Bubble Sort':
-        await bubbleSort({
-          array: randomizedArray,
-          setArray: setRandomizedArray,
-          visualizationSpeed: visualizationSpeed,
-          setColorsArray: setColorsArray,
-        });
+        await bubbleSort(propsObject);
         break;
 
       case 'Insertion Sort':
-        await insertionSort({
-          array: randomizedArray,
-          setArray: setRandomizedArray,
-          visualizationSpeed: visualizationSpeed,
-          setColorsArray: setColorsArray,
-        });
+        await insertionSort(propsObject);
         break;
 
       case 'QuickSort (L)':
         await quickSortLWrapper({
-          array: randomizedArray,
-          leftIndex: 0,
-          rightIndex: randomizedArray.length - 1,
-          setArray: setRandomizedArray,
-          visualizationSpeed: visualizationSpeed,
-          setColorsArray: setColorsArray,
+          ...propsObject, leftIndex: 0,
+          rightIndex: randomizedArray.length - 1
         });
         break;
       case 'Merge Sort':
-        await mergeSortWrapper({
-          array: randomizedArray,
-          leftIndex: 0,
-          rightIndex: randomizedArray.length - 1,
-          setArray: setRandomizedArray,
-          visualizationSpeed: visualizationSpeed,
-          setColorsArray: setColorsArray,
-        });
+        await mergeSortWrapper(
+          {
+            ...propsObject, leftIndex: 0,
+            rightIndex: randomizedArray.length - 1
+          });
         break;
 
       default:
@@ -111,7 +99,7 @@ const Home = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <MainWrapper>
       <HomeHeader
         algorithms={algorithms}
         onAlgorithmChange={setCurrentAlgorithm}
@@ -122,19 +110,7 @@ const Home = () => {
         onStart={onVisualize}
         isVisualizing={isVisualizing}
       />
-      <div
-        style={{
-          backgroundColor: '#1233c7',
-          display: 'flex',
-          height: '100%',
-          width: '100%',
-          flexDirection: 'row nowrap',
-          alignItems: 'end',
-          padding: '0 0 5rem 25%',
-          boxSizing:"border-box",
-
-        }}
-      >
+      <ArrayWrapper>
         {randomizedArray.map((item, index) => {
           const height = (item / maxItem) * 80;
           const width = (1 / randomizedArray.length) * 70;
@@ -159,9 +135,24 @@ const Home = () => {
             </div>
           );
         })}
-      </div>
-    </div>
+      </ArrayWrapper>
+    </MainWrapper>
   );
 };
+
+const MainWrapper = styled.div`
+  display: flex;
+  flex-flow:column nowrap;
+  height:100vh
+`
+const ArrayWrapper = styled.div`
+background-color: #1233c7;
+display:flex;
+height:100%;
+width:100%;
+flex-flow:row nowrap;
+align-items: end;
+padding: 0 0 5rem 25%;
+`
 
 export default Home;
