@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.scss"],"names":[],"mappings":"AAEA,UAEE,QAAA,CACA,YAAA,CACA,WAAA,CAEF,EACE,qBAAA,CACA,SAAA,CACA,QAAA","file":"main.60fde7c6.chunk.css","sourcesContent":["@import '~antd/dist/antd.css';//import antd\n\nbody,\nhtml {\n  margin: 0;\n  height: 100vh;\n  width: 100vw;\n}\n*{\n  box-sizing: border-box;\n  padding:0;\n  margin:0;\n}\n\n"]}
