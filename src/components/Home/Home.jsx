@@ -51,7 +51,7 @@ const Home = () => {
   };
   const onSpeedChange = (val) => {
     if (isVisualizing) return;
-    setVisualizationSpeed(100 - val + 1);
+    setVisualizationSpeed(100 - val + 10);
   };
 
   const onVisualize = async () => {
